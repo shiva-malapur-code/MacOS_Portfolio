@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -21,7 +21,7 @@ const renderText = (text, className, baseWeight = 400) => {
   ));
 };
 
-const setupTextHover = (container, type) => {
+const setupTextHover = (container, type, prevRafId) => {
   if (!container) return () => {};
   const letters = container.querySelectorAll("span");
   const { min, max, default: base } = FONT_WEIGHTS[type];
@@ -36,7 +36,7 @@ const setupTextHover = (container, type) => {
   const handleMouseMove = (e) => {
     const { left } = container.getBoundingClientRect();
     const mouseX = e.clientX - left;
-    requestAnimationFrame(() => {
+    const rafId = requestAnimationFrame(() => {
       letters.forEach((letter) => {
         const { left: l, width: w } = letter.getBoundingClientRect();
         const distance = Math.abs(mouseX - (l - left + w / 2));
@@ -45,10 +45,17 @@ const setupTextHover = (container, type) => {
         animateLetters(letter, min + (max - min) * intensity);
       });
     });
+
+    // Cancel any previously scheduled frame
+    cancelAnimationFrame(prevRafId.current);
+
+    // Store the current rafId
+    prevRafId.current = rafId;
   };
 
   const handleMouseLeave = () => {
     letters.forEach((letter) => animateLetters(letter, base, 0.3));
+    cancelAnimationFrame(prevRafId.current);
   };
 
   container.addEventListener("mousemove", handleMouseMove);
@@ -57,16 +64,22 @@ const setupTextHover = (container, type) => {
   return () => {
     container.removeEventListener("mousemove", handleMouseMove);
     container.removeEventListener("mouseleave", handleMouseLeave);
+    cancelAnimationFrame(prevRafId.current);
   };
 };
 
 const Welcome = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
+  const prevRafId = useRef(null);
 
   useGSAP(() => {
-    const titleCleanup = setupTextHover(titleRef.current, "title");
-    const subtitleCleanup = setupTextHover(subtitleRef.current, "subtitle");
+    const titleCleanup = setupTextHover(titleRef.current, "title", prevRafId);
+    const subtitleCleanup = setupTextHover(
+      subtitleRef.current,
+      "subtitle",
+      prevRafId
+    );
 
     return () => {
       titleCleanup();
