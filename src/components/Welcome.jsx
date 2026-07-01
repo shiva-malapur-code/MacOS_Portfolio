@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -6,10 +6,11 @@ const FONT_WEIGHTS = {
   subtitle: { min: 100, max: 400, default: 100 },
   title: { min: 400, max: 900, default: 400 },
 };
+
 const renderText = (text, className, baseWeight = 400) => {
   return [...text].map((char, i) => (
     <span
-      key={i}
+      key={`${char}-${i}`}
       className={className}
       style={{
         fontVariationSettings: `"wght" ${baseWeight}`,
@@ -35,12 +36,14 @@ const setupTextHover = (container, type) => {
   const handleMouseMove = (e) => {
     const { left } = container.getBoundingClientRect();
     const mouseX = e.clientX - left;
-    letters.forEach((letter) => {
-      const { left: l, width: w } = letter.getBoundingClientRect();
-      const distance = Math.abs(mouseX - (l - left + w / 2));
-      const intensity = Math.exp(-(distance ** 2) / 2000);
+    requestAnimationFrame(() => {
+      letters.forEach((letter) => {
+        const { left: l, width: w } = letter.getBoundingClientRect();
+        const distance = Math.abs(mouseX - (l - left + w / 2));
+        const intensity = Math.exp(-(distance ** 2) / 2000);
 
-      animateLetters(letter, min + (max - min) * intensity);
+        animateLetters(letter, min + (max - min) * intensity);
+      });
     });
   };
 
