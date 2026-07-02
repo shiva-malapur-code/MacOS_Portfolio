@@ -2,7 +2,6 @@ import { WindowControlls } from "#components";
 import { techStack } from "#constants";
 import windowWrapper from "#hoc/windowWrapper";
 import { Check, Flag } from "lucide-react";
-import React from "react";
 
 const Terminal = () => {
   return (
@@ -28,7 +27,7 @@ const Terminal = () => {
               <h3>{category}</h3>
               <ul>
                 {items.map((item, i) => (
-                  <li key={i}>
+                  <li key={item}>
                     {item}
                     {i < items.length - 1 ? "," : ""}
                   </li>
