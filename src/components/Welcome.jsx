@@ -1,8 +1,8 @@
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useRef } from "react";
+import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-const FONT_WEIGHTS = {
+const FONT_WEIGHT = {
   subtitle: { min: 100, max: 400, default: 100 },
   title: { min: 400, max: 900, default: 400 },
 };
@@ -10,53 +10,44 @@ const FONT_WEIGHTS = {
 const renderText = (text, className, baseWeight = 400) => {
   return [...text].map((char, i) => (
     <span
-      key={`${char}-${i}`}
+      key={i}
       className={className}
-      style={{
-        fontVariationSettings: `"wght" ${baseWeight}`,
-      }}
+      style={{ fontVariationSettings: `'wght' ${baseWeight}` }}
     >
       {char === " " ? "\u00A0" : char}
     </span>
   ));
 };
 
-const setupTextHover = (container, type, prevRafId) => {
+const setupTextHover = (container, type) => {
   if (!container) return () => {};
+
   const letters = container.querySelectorAll("span");
-  const { min, max, default: base } = FONT_WEIGHTS[type];
-  const animateLetters = (letter, weight, duration = 0.25) => {
+  const { min, max, default: base } = FONT_WEIGHT[type];
+
+  const animateLetter = (letter, weight, duration = 0.25) => {
     return gsap.to(letter, {
-      fontVariationSettings: `"wght" ${weight}`,
       duration,
       ease: "power2.out",
+      fontVariationSettings: `'wght' ${weight}`,
     });
   };
 
   const handleMouseMove = (e) => {
     const { left } = container.getBoundingClientRect();
     const mouseX = e.clientX - left;
-    const rafId = requestAnimationFrame(() => {
-      letters.forEach((letter) => {
-        const { left: l, width: w } = letter.getBoundingClientRect();
-        const distance = Math.abs(mouseX - (l - left + w / 2));
-        const intensity = Math.exp(-(distance ** 2) / 2000);
 
-        animateLetters(letter, min + (max - min) * intensity);
-      });
+    letters.forEach((letter) => {
+      const { left: l, width: w } = letter.getBoundingClientRect();
+      const distance = Math.abs(mouseX - (l - left + w / 2));
+      const intensity = Math.exp(-(distance ** 2) / 20000);
+
+      animateLetter(letter, min + (max - min) * intensity);
     });
-
-    // Cancel any previously scheduled frame
-    cancelAnimationFrame(prevRafId.current);
-
-    // Store the current rafId
-    prevRafId.current = rafId;
   };
 
-  const handleMouseLeave = () => {
-    letters.forEach((letter) => animateLetters(letter, base, 0.3));
-    cancelAnimationFrame(prevRafId.current);
-  };
+  const handleMouseLeave = () =>
+    letters.forEach((letter) => animateLetter(letter, base, 0.3));
 
   container.addEventListener("mousemove", handleMouseMove);
   container.addEventListener("mouseleave", handleMouseLeave);
@@ -64,26 +55,20 @@ const setupTextHover = (container, type, prevRafId) => {
   return () => {
     container.removeEventListener("mousemove", handleMouseMove);
     container.removeEventListener("mouseleave", handleMouseLeave);
-    cancelAnimationFrame(prevRafId.current);
   };
 };
 
 const Welcome = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
-  const prevRafId = useRef(null);
 
   useGSAP(() => {
-    const titleCleanup = setupTextHover(titleRef.current, "title", prevRafId);
-    const subtitleCleanup = setupTextHover(
-      subtitleRef.current,
-      "subtitle",
-      prevRafId
-    );
+    const titleCleanup = setupTextHover(titleRef.current, "title");
+    const subtitleCleanup = setupTextHover(subtitleRef.current, "subtitle");
 
     return () => {
-      titleCleanup();
       subtitleCleanup();
+      titleCleanup();
     };
   }, []);
 
@@ -91,18 +76,17 @@ const Welcome = () => {
     <section id="welcome">
       <p ref={subtitleRef}>
         {renderText(
-          "Hey, I am Shivashankar! Welcome to my",
-          "text-3xl font-georama",
+          "Hey there, Welcome to macOS Style Portfolio of",
+          "text-3xl font-georama max-sm:text-lg",
           100
         )}
       </p>
       <h1 ref={titleRef} className="mt-7">
-        {renderText("Portfolio", "text-9xl italic font-georama")}
+        {renderText(
+          "Shivashankar Malapur",
+          "text-9xl italic font-georama max-sm:text-5xl"
+        )}
       </h1>
-
-      <div className="small-screen">
-        <p>This portfolio is designed to desktop/tablet screens only.</p>
-      </div>
     </section>
   );
 };

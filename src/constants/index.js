@@ -77,25 +77,24 @@ const dockApps = [
 const blogPosts = [
   {
     id: 1,
-    date: "Sep 2, 2025",
-    title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
+    date: "Jun 25, 2026",
+    title: "Common mistakes while using useEffect",
     image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
+    link: "https://www.linkedin.com/posts/shivashankar08_common-mistakes-while-using-useeffect-useeffect-activity-7474111352744124416-wsJW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAABQG8sUBtDK_eNHIm6MtHGGIi-hFMSW8Gpw",
   },
   {
     id: 2,
-    date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
+    date: "June 20, 2025",
+    title: "Nested Dynamic Routes in Next.js",
     image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+    link: "https://www.linkedin.com/pulse/next-js-tutorials-embracing-nextjs-journey-day-9-nested-malapur-ynyic/",
   },
   {
     id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
+    date: "June 24, 2026",
+    title: "Basics of React js",
     image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
+    link: "https://www.linkedin.com/posts/shivashankar08_heading-ugcPost-7474076642819211264-KCV4/?utm_source=share&utm_medium=member_desktop&rcm=ACoAABQG8sUBtDK_eNHIm6MtHGGIi-hFMSW8Gpw",
   },
 ];
 
@@ -128,28 +127,28 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    link: "https://github.com/shiva-malapur-code",
   },
   {
     id: 2,
     text: "Platform",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: "https://www.linkedin.com/feed",
   },
   {
     id: 3,
     text: "Twitter/X",
     icon: "/icons/twitter.svg",
     bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
+    link: "https://x.com/amshivu08",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    link: "https://www.linkedin.com/in/shivashankar08/",
   },
 ];
 
@@ -184,19 +183,19 @@ const photosLinks = [
 const gallery = [
   {
     id: 1,
-    img: "/images/gal1.png",
+    img: "/images/shivashankar.jpg",
   },
   {
     id: 2,
-    img: "/images/gal2.png",
+    img: "/images/shivashankar-2.jpg",
   },
   {
     id: 3,
-    img: "/images/gal3.png",
+    img: "/images/shivashankar-3.jpg",
   },
   {
     id: 4,
-    img: "/images/gal4.png",
+    img: "/images/shivashankar-4.jpg",
   },
 ];
 
@@ -247,7 +246,7 @@ const WORK_LOCATION = {
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/fZdTYswuZjU?si=Awjl-pIst9e09_UU",
+          href: "https://www.nike.in/",
           position: "top-10 right-20",
         },
         {
@@ -258,15 +257,6 @@ const WORK_LOCATION = {
           fileType: "img",
           position: "top-52 right-80",
           imageUrl: "/images/project-1.png",
-        },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 right-20",
         },
       ],
     },
@@ -300,7 +290,7 @@ const WORK_LOCATION = {
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
+          href: "https://enhancv.com/resources/resume-checker/",
           position: "top-20 left-20",
         },
         {
@@ -311,15 +301,6 @@ const WORK_LOCATION = {
           fileType: "img",
           position: "top-52 left-80",
           imageUrl: "/images/project-2.png",
-        },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 left-5",
         },
       ],
     },
@@ -353,7 +334,7 @@ const WORK_LOCATION = {
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
+          href: "https://www.swiggy.com/",
           position: "top-10 right-20",
         },
         {
@@ -364,15 +345,6 @@ const WORK_LOCATION = {
           fileType: "img",
           position: "top-52 right-80",
           imageUrl: "/images/project-3.png",
-        },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 right-20",
         },
       ],
     },
@@ -393,7 +365,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/shivashankar.jpg",
     },
     {
       id: 2,
@@ -402,16 +374,16 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/shivashankar-2.jpg",
     },
     {
       id: 3,
-      name: "conference-me.png",
+      name: "trip.png",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/shivashankar-3.jpg",
     },
     {
       id: 4,
@@ -421,12 +393,12 @@ const ABOUT_LOCATION = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
+      image: "/images/shivashankar.jpg",
       description: [
-        "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
+        "Hey! I’m Shivashankar 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
         "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
         "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
-        "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
+        "Outside of dev work, you'll find me playing table tennis, sipping tea and coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
       ],
     },
   ],
@@ -446,7 +418,7 @@ const RESUME_LOCATION = {
       kind: "file",
       fileType: "pdf",
       // you can add `href` if you want to open a hosted resume
-      // href: "/your/resume/path.pdf",
+      href: "/files/resume.pdf",
     },
   ],
 };
